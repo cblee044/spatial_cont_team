@@ -1,1 +1,2 @@
-# spatial_cont_team
+# Spatial Contamination Team
+Welcome team members. 
