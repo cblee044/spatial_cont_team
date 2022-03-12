@@ -1,11 +1,11 @@
 library(tidyverse)
 
 mloe_data <- read_csv("Bight_MLOE_98-18.csv", show_col_types = FALSE) %>%
+    select(-"Strata") %>%
     pivot_wider(names_from = "LOE",
         values_from = c("Score", "Category")) %>%
     select("StationID",
         "Survey",
-        "Strata",
         "TrendStrata",
         "AreaWeight",
         "Category_Benthic",
@@ -122,7 +122,7 @@ ggplot(mloe_data_plot, aes(fill = Chemistry,
         x = Survey)) +
     geom_bar(position = "stack", stat = "identity", color = "black") +
     facet_wrap(vars(TrendStrata), ncol = 1) +
-    ylim(0, 60) +
+    ylim(0, 100) +
     scale_fill_manual(values = c("#f00c0c", "#ffc118", "#fffc37")) +
     xlab("Bight Survey") +
     ylab("Percent Area") +
@@ -149,7 +149,7 @@ ggplot(mloe_data_plot, aes(fill = Toxicity,
         x = Survey)) +
     geom_bar(position = "stack", stat = "identity", color = "black") +
     facet_wrap(vars(TrendStrata), ncol = 1) +
-    ylim(0, 60) +
+    ylim(0, 100) +
     scale_fill_manual(values = c("#f00c0c", "#ffc118", "#fffc37")) +
     xlab("Bight Survey") +
     ylab("Percent Area") +
